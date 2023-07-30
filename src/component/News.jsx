@@ -7,10 +7,10 @@ import PropTypes from 'prop-types'
 export class News extends Component {
 static defaultProps = {
   country:'in',
-  pageSize: 8,
-  category: 'general'
+  pageSize:8,
+  category:'general',
 }
-static PropTypes = {
+static propTypes = {
   country: PropTypes.string,
   pageSize: PropTypes.number,
   category: PropTypes.string,
@@ -27,7 +27,7 @@ static PropTypes = {
   }
   async componentDidMount() {
 
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=ede06667dca94c6bb66d18da5d655e90&page=1&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=ede06667dca94c6bb66d18da5d655e90&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json()
@@ -39,7 +39,7 @@ static PropTypes = {
     })
   }
   handlePrevClick = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=ede06667dca94c6bb66d18da5d655e90&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=ede06667dca94c6bb66d18da5d655e90&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json()
@@ -55,7 +55,7 @@ static PropTypes = {
     if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
 
 
-      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=ede06667dca94c6bb66d18da5d655e90&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=ede06667dca94c6bb66d18da5d655e90&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
       this.setState({ loading: true });
       let data = await fetch(url);
       let parsedData = await data.json()
@@ -76,7 +76,7 @@ static PropTypes = {
         <div className="row">
           {!this.state.loading && this.state.articles.map((element) => {
             return <div className="col-md-4" key={element.url}>
-              <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.urlToImage} newsUrl={element.url} />
+              <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
             </div>
           })}
         </div>
