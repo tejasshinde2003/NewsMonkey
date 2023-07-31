@@ -14,7 +14,7 @@ import News from './component/News';
  
  
 export default class App extends Component {
- 
+ pageSize = 5;
   render() {
     return (
       <div>
@@ -22,13 +22,13 @@ export default class App extends Component {
    <NavBar/> 
    <Switch>
 
-    <Route exact path="/"><News key="general" pageSize={5} country="in" category="general"/> </Route>
-     <Route exact path="/Bussiness"><News key="Bussiness" pageSize={5} country="in" category="Bussiness"/></Route>
-     <Route exact path="/Entertainment"><News key="Entertainment" pageSize={5} country="in" category="Entertainment"/></Route>
-     <Route exact path="/Health"><News key="Health" pageSize={5} country="in" category="Health"/></Route>
-     <Route exact path="/Science"><News key="Science" pageSize={5} country="in" category="Science"/></Route>
-     <Route exact path="/Sport"><News key="Sport" pageSize={5} country="in" category="Sport"/></Route>
-     <Route exact path="/Technology"><News key="Technology" pageSize={5} country="in" category="Technology"/></Route>
+    <Route exact path="/"><News key="general" pageSize={this.pageSize} country="in" category="general"/> </Route>
+     <Route exact path="/Bussiness"><News key="Bussiness" pageSize={this.pageSize} country="in" category="Bussiness"/></Route>
+     <Route exact path="/Entertainment"><News key="Entertainment" pageSize={this.pageSize} country="in" category="Entertainment"/></Route>
+     <Route exact path="/Health"><News key="Health" pageSize={this.pageSize} country="in" category="Health"/></Route>
+     <Route exact path="/Science"><News key="Science" pageSize={this.pageSize} country="in" category="Science"/></Route>
+     <Route exact path="/Sport"><News key="Sport" pageSize={this.pageSize} country="in" category="Sport"/></Route>
+     <Route exact path="/Technology"><News key="Technology" pageSize={this.pageSize} country="in" category="Technology"/></Route>
 
    </Switch>
    </Router>
