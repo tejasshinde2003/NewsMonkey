@@ -3,6 +3,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 // import { Link } from 'react-router-dom'
 // import PropTypes from 'prop-types'
 
+
 const NavBar = () => {
 
 
@@ -42,3 +43,4 @@ const NavBar = () => {
 }
 
 export default NavBar
+
